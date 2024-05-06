@@ -1,18 +1,17 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: 'ESTOQUE' })
 export class Estoque {
     @PrimaryGeneratedColumn()
-    id_estoque: number;
+    id_estoque: string;
 
-    @Column()
-    id_produto: number;
+    @Column({ unique: true, foreignKeyConstraintName: "FK_PRODUTO_ESTOQUE", })
+    id_produto: string;
 
     @Column()
     quantidade: number;
 
     @Column()
     localizacao: string;
-
-
 }

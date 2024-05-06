@@ -5,9 +5,13 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import {ConfigModule, ConfigService} from '@nestjs/config'
 import { Estoque } from './estoque/estoque.entity';
 import { Produto } from './produto/produto.entity';
+import { EstoqueController } from './estoque/estoque.controller';
+import { EstoqueService } from './estoque/estoque.service';
+import { EstoqueModule } from './estoque/estoque.module';
 
 @Module({
   imports: [
+    EstoqueModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -24,7 +28,7 @@ import { Produto } from './produto/produto.entity';
       inject: [ConfigService],
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, EstoqueController],
+  providers: [AppService, EstoqueService],
 })
 export class AppModule { }

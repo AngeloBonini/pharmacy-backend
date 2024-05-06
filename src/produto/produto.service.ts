@@ -5,11 +5,11 @@ import { Produto } from "./produto.entity";
 
 @Injectable()
 export class ProdutoService {
-    constructor(@InjectRepository(Produto) private readonly estoqueRepository: Repository<Produto>) {
+    constructor(@InjectRepository(Produto) private readonly produtoRepository: Repository<Produto>) {
     }
 
     async create(dto: Produto) {
-        const produto = this.estoqueRepository.create(dto);
-        return await this.estoqueRepository.save(produto);
+        const produto = this.produtoRepository.create(dto);
+        return await this.produtoRepository.save(produto);
     }
 }
