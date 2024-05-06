@@ -5,6 +5,6 @@ import { Estoque } from "./estoque.entity";
 @Module({
     imports: [TypeOrmModule.forFeature([Estoque])]
 })
-export class EntitiesModule {
+export class EstoqueModule {
 
 }

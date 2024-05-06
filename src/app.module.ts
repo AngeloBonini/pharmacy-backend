@@ -3,7 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import {ConfigModule, ConfigService} from '@nestjs/config'
-import { Estoque } from './entities/estoque.entity';
+import { Estoque } from './estoque/estoque.entity';
+import { Produto } from './produto/produto.entity';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { Estoque } from './entities/estoque.entity';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [Estoque],
+        entities: [Estoque, Produto],
         synchronize: true,
       }),
       inject: [ConfigService],
