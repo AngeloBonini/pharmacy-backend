@@ -8,10 +8,14 @@ import { Produto } from './produto/produto.entity';
 import { EstoqueController } from './estoque/estoque.controller';
 import { EstoqueService } from './estoque/estoque.service';
 import { EstoqueModule } from './estoque/estoque.module';
+import { ProdutoController } from './produto/produto.controller';
+import { ProdutoService } from './produto/produto.service';
+import { ProdutoModule } from './produto/produto.module';
 
 @Module({
   imports: [
     EstoqueModule,
+    ProdutoModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -28,7 +32,7 @@ import { EstoqueModule } from './estoque/estoque.module';
       inject: [ConfigService],
     }),
   ],
-  controllers: [AppController, EstoqueController],
-  providers: [AppService, EstoqueService],
+  controllers: [AppController, EstoqueController, ProdutoController],
+  providers: [AppService, EstoqueService, ProdutoService],
 })
 export class AppModule { }
