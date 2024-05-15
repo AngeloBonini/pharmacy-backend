@@ -12,4 +12,9 @@ export class ProdutoService {
         const produto = this.produtoRepository.create(dto);
         return await this.produtoRepository.save(produto);
     }
+
+    async getProduct(where? : any) {
+        const produtos = await this.produtoRepository.findBy(where);
+        return produtos;
+    }
 }
