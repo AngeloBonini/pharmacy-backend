@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm'
-import {ConfigModule, ConfigService} from '@nestjs/config'
+import { ConfigModule, ConfigService } from '@nestjs/config'
 import { Estoque } from './estoque/estoque.entity';
 import { Produto } from './produto/produto.entity';
 import { EstoqueController } from './estoque/estoque.controller';
@@ -25,6 +25,7 @@ import { TransacaoService } from './transacao/transacao.service';
 import { SaldoModule } from './saldo/saldo.module';
 import { SaldoController } from './saldo/saldo.controller';
 import { SaldoService } from './saldo/saldo.service';
+import { CustomLogger } from './custom-logger/custom-logger.service';
 
 @Module({
   imports: [
@@ -46,6 +47,8 @@ import { SaldoService } from './saldo/saldo.service';
         database: configService.get('DB_NAME'),
         entities: [Estoque, Produto, Pessoa],
         synchronize: true,
+        logging: true,
+        logger: new CustomLogger(),
       }),
       inject: [ConfigService],
     }),
