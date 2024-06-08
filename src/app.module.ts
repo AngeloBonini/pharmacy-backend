@@ -15,12 +15,25 @@ import { PessoaModule } from './pessoa/pessoa.module';
 import { PessoaController } from './pessoa/pessoa.controller';
 import { PessoaService } from './pessoa/pessoa.service';
 import { Pessoa } from './pessoa/pessoa.entity';
+import { ReceitaModule } from './receita/receia.module';
+import { ReceitaController } from './receita/receita.controller';
+import { ReceitaService } from './receita/receita.service';
+import { ProdutosReceitaService } from './produtos-receita/produtos-receita.service';
+import { TransacaoModule } from './transacao/transacao.module';
+import { TransacaoController } from './transacao/transacao.controller';
+import { TransacaoService } from './transacao/transacao.service';
+import { SaldoModule } from './saldo/saldo.module';
+import { SaldoController } from './saldo/saldo.controller';
+import { SaldoService } from './saldo/saldo.service';
 
 @Module({
   imports: [
     EstoqueModule,
     ProdutoModule,
     PessoaModule,
+    ReceitaModule,
+    TransacaoModule,
+    SaldoModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -37,7 +50,7 @@ import { Pessoa } from './pessoa/pessoa.entity';
       inject: [ConfigService],
     }),
   ],
-  controllers: [AppController, EstoqueController, ProdutoController, PessoaController],
-  providers: [AppService, EstoqueService, ProdutoService, PessoaService],
+  controllers: [AppController, EstoqueController, ProdutoController, PessoaController, ReceitaController, TransacaoController, SaldoController],
+  providers: [AppService, EstoqueService, ProdutoService, PessoaService, ReceitaService, ProdutosReceitaService, TransacaoService, SaldoService],
 })
 export class AppModule { }
