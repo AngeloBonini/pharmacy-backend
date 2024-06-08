@@ -26,6 +26,11 @@ import { SaldoModule } from './saldo/saldo.module';
 import { SaldoController } from './saldo/saldo.controller';
 import { SaldoService } from './saldo/saldo.service';
 import { CustomLogger } from './custom-logger/custom-logger.service';
+import { ProdutosReceitaModule } from './produtos-receita/produtos-receita.module';
+import { Receita } from './receita/receita.entity';
+import { Transacao } from './transacao/transacao.entity';
+import { Saldo } from './saldo/saldo.entity';
+import { ProdutosReceita } from './produtos-receita/produtos-receita.entity';
 
 @Module({
   imports: [
@@ -34,6 +39,7 @@ import { CustomLogger } from './custom-logger/custom-logger.service';
     PessoaModule,
     ReceitaModule,
     TransacaoModule,
+    ProdutosReceitaModule,
     SaldoModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
@@ -45,7 +51,7 @@ import { CustomLogger } from './custom-logger/custom-logger.service';
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        entities: [Estoque, Produto, Pessoa],
+        entities: [Estoque, Produto, Pessoa, Receita, Transacao, Saldo, ProdutosReceita],
         synchronize: true,
         logging: true,
         logger: new CustomLogger(),

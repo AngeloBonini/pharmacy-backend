@@ -6,7 +6,7 @@ export class Saldo {
     id_saldo: string;
 
     @Column()
-    id_pessoa: string;7
+    id_pessoa: string;
 
     @Column()
     valor: number;
