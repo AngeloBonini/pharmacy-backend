@@ -11,4 +11,9 @@ export class PessoaService {
         const pessoa = this.pessoaRepository.create(dto);
         return await this.pessoaRepository.save(pessoa);
     }
+
+    async getPessoa(where? : any) {
+        const produtosReceitas = await this.pessoaRepository.findBy(where);
+        return produtosReceitas;
+    }
 }

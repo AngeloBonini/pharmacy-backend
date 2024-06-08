@@ -13,7 +13,7 @@ export class ProdutosReceitaService {
         return await this.produtosReceitaRepository.save(produtoReceita);
     }
 
-    async getProduct(where? : any) {
+    async getProdutosReceitas(where? : any) {
         const produtosReceitas = await this.produtosReceitaRepository.findBy(where);
         return produtosReceitas;
     }

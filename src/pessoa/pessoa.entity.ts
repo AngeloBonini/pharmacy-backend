@@ -37,5 +37,4 @@ export class Pessoa {
 
     @Column()
     tipo: string;
-    //tipos ['caixa', 'farmaceutico', 'gerente', 'cliente', 'fornecedor']
 }
