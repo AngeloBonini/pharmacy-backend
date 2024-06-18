@@ -8,6 +8,7 @@ export class PessoaController {
     constructor(private readonly pessoaService: PessoaService) { }
 
     @Post()
+    @UseGuards(JwtAuthGuard)
     create(@Body() dto) {
         return this.pessoaService.create(dto);
     }
@@ -22,6 +23,7 @@ export class PessoaController {
     }
 
     @Get()
+    @UseGuards(JwtAuthGuard)
     getPessoa(@Body() where?) {
         return this.pessoaService.getPessoa(where);
     }
