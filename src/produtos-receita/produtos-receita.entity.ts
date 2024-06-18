@@ -1,8 +1,11 @@
+import { UseGuards } from "@nestjs/common";
+import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 import { Produto } from "src/produto/produto.entity";
 import { Receita } from "src/receita/receita.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: "PRODUTOS-RECEITA" })
+@UseGuards(JwtAuthGuard)
 export class ProdutosReceita {
 
     @PrimaryColumn()

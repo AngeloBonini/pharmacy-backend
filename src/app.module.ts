@@ -31,6 +31,9 @@ import { Receita } from './receita/receita.entity';
 import { Transacao } from './transacao/transacao.entity';
 import { Saldo } from './saldo/saldo.entity';
 import { ProdutosReceita } from './produtos-receita/produtos-receita.entity';
+import { AuthModule } from './auth/auth.module';
+import { AuthService } from './auth/auth.service';
+import { AuthController } from './auth/auth.controller';
 
 @Module({
   imports: [
@@ -39,18 +42,19 @@ import { ProdutosReceita } from './produtos-receita/produtos-receita.entity';
     PessoaModule,
     ReceitaModule,
     TransacaoModule,
+    AuthModule,
     ProdutosReceitaModule,
     SaldoModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
+      useFactory: () => ({
         type: 'mysql',
-        host: configService.get('DB_HOST'),
-        port: +configService.get('DB_PORT'),
-        username: configService.get('DB_USERNAME'),
-        password: configService.get('DB_PASSWORD'),
-        database: configService.get('DB_NAME'),
+        host: process.env.DB_HOST,
+        port: 3306,
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
         entities: [Estoque, Produto, Pessoa, Receita, Transacao, Saldo, ProdutosReceita],
         synchronize: true,
         logging: true,

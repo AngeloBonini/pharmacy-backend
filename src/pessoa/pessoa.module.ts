@@ -6,7 +6,7 @@ import { PessoaController } from "./pessoa.controller";
 
 @Module({
     imports: [TypeOrmModule.forFeature([Pessoa])],
-    exports: [TypeOrmModule],
+    exports: [PessoaService, TypeOrmModule],
     providers: [PessoaService],
     controllers: [PessoaController],
 })

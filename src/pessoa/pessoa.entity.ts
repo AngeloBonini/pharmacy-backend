@@ -9,16 +9,19 @@ export class Pessoa {
     nome: string;
 
     @Column()
+    email: string;
+
+    @Column()
     password: string;
 
     @Column()
-    idade: string;
+    idade: number;
 
     @Column()
-    cpf: number;
+    cpf: string;
 
     @Column()
-    cnpj: number;
+    cnpj: string;
 
     @Column()
     telefone: string;
@@ -33,7 +36,7 @@ export class Pessoa {
     cidade: string;
 
     @Column()
-    cep: number;
+    cep: string;
 
     @Column()
     tipo: string;

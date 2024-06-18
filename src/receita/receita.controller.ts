@@ -1,7 +1,9 @@
-import { Body, Controller, Delete, Get, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Post, Put, UseGuards } from "@nestjs/common";
 import { ReceitaService } from "./receita.service";
+import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 
 @Controller("/receita")
+@UseGuards(JwtAuthGuard)
 export class ReceitaController {
     constructor(private readonly receitaService: ReceitaService) {
 

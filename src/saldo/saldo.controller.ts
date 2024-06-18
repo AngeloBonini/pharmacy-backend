@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
 import { SaldoService } from "./saldo.service";
+import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 
 @Controller("/saldo")
+@UseGuards(JwtAuthGuard)
 export class SaldoController {
     constructor(private readonly saldoService: SaldoService) {
 
