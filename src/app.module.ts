@@ -15,7 +15,7 @@ import { PessoaModule } from './pessoa/pessoa.module';
 import { PessoaController } from './pessoa/pessoa.controller';
 import { PessoaService } from './pessoa/pessoa.service';
 import { Pessoa } from './pessoa/pessoa.entity';
-import { ReceitaModule } from './receita/receia.module';
+import { ReceitaModule } from './receita/receita.module';
 import { ReceitaController } from './receita/receita.controller';
 import { ReceitaService } from './receita/receita.service';
 import { ProdutosReceitaService } from './produtos-receita/produtos-receita.service';

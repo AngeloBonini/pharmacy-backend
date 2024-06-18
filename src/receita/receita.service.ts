@@ -27,4 +27,12 @@ export class ReceitaService {
         const receitas = await this.receitaRepository.findBy(where);
         return receitas;
     }
+
+    async updateReceita(set: any, where: any) {
+        return await this.receitaRepository.update(where, set);
+    }
+
+    async deleteReceita(where: any) {
+        return await this.receitaRepository.delete(where);
+    }
 }
