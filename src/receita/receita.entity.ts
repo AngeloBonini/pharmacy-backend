@@ -12,6 +12,6 @@ export class Receita {
     @Column()
     data_emissao: Date;
 
-    @OneToMany(() => ProdutosReceita, produtosReceita => produtosReceita.receita)
+    @OneToMany(() => ProdutosReceita, produtosReceita => produtosReceita.receita, {eager: true})
     produtosReceita: ProdutosReceita[];
 }

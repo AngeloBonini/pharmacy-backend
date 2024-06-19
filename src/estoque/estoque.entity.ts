@@ -7,7 +7,7 @@ export class Estoque {
     @PrimaryGeneratedColumn()
     id_estoque: string;
 
-    @ManyToOne(() => Produto, produto => produto.estoques)
+    @ManyToOne(() => Produto, produto => produto.estoques, { eager: true })
     @JoinColumn({ name: 'id_produto' }) // Define a coluna de junção no lado do estoque
     produto: Produto;
     @Column()
