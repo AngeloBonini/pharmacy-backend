@@ -24,10 +24,7 @@ export class EstoqueService {
 
     async createFakeStocks(): Promise<Estoque[]> {
         const estoques: Estoque[] = [];
-
         const produtos = await this.produtoService.getProduct({});
-
-
 
         for (const produto of produtos) {
             const estoque = this.estoqueRepository.create({

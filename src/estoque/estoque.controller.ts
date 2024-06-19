@@ -13,7 +13,7 @@ export class EstoqueController {
     create(@Body() dto) {
         return this.estoqueService.create(dto);
     }
-    @Post('/populate/stocks')
+    @Post('/populate')
     populateFarmaceuticos(@Body() dto) {
         return this.estoqueService.createFakeStocks();
     }
