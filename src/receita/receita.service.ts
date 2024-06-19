@@ -1,3 +1,4 @@
+import { ProdutosReceitaService } from './../produtos-receita/produtos-receita.service';
 import { ProdutosReceita } from './../produtos-receita/produtos-receita.entity';
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -6,21 +7,28 @@ import { Receita } from "./receita.entity";
 
 interface ReceitaDto {
     receita: Receita,
-    produtosReceita: ProdutosReceita,
+    produtosReceitas: ProdutosReceita[],
 }
 @Injectable()
 export class ReceitaService {
     constructor(@InjectRepository(Receita) private readonly receitaRepository: Repository<Receita>,
-        @InjectRepository(ProdutosReceita) private readonly produtosReceitaRepository: Repository<ProdutosReceita>) {
+        @InjectRepository(ProdutosReceita) private readonly produtosReceitaService: ProdutosReceitaService) {
     }
 
     async create(dto: ReceitaDto) {
         const receita = this.receitaRepository.create(dto.receita);
-        const produtosReceita = this.produtosReceitaRepository.create(dto.produtosReceita)
-        const saveReceita = await this.receitaRepository.save(receita);
-        const saveProdutosReceita = this.produtosReceitaRepository.save(produtosReceita);
 
-        return {saveReceita, saveProdutosReceita}
+        const produtosReceitasCreateds = [] as ProdutosReceita[]
+        for (const produtoReceita of dto.produtosReceitas) {
+            produtoReceita.id_receita = receita.id_receita;
+            produtoReceita.receita = receita;
+            const produtosReceitaCreated = await this.produtosReceitaService.create(produtoReceita);
+            produtosReceitasCreateds.push(produtosReceitaCreated);
+        }
+
+        const saveReceita = await this.receitaRepository.save(receita);
+
+        return { saveReceita, produtosReceitasCreateds }
     }
 
     async getReceita(where?: any) {

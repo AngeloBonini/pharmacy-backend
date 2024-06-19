@@ -7,7 +7,7 @@ export class Receita {
     id_receita: string;
 
     @Column()
-    id_cliente: string;
+    id_farmaceutico: string;
 
     @Column()
     data_emissao: Date;
