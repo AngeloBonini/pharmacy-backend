@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
 import { EstoqueService } from "./estoque.service";
 import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 
@@ -8,8 +8,19 @@ export class EstoqueController {
     constructor(private readonly estoqueService: EstoqueService) {
 
     }
+    
     @Post()
     create(@Body() dto) {
         return this.estoqueService.create(dto);
+    }
+    @Post('/populate/stocks')
+    populateFarmaceuticos(@Body() dto) {
+        return this.estoqueService.createFakeStocks();
+    }
+
+    @Get()
+    @UseGuards(JwtAuthGuard)
+    getPessoa(@Body() where?) {
+        return this.estoqueService.getEstoque(where);
     }
 }
