@@ -50,7 +50,7 @@ export class PessoaService {
                 bairro: faker.location.country(),
                 cidade: faker.location.city(),
                 cep: faker.location.zipCode(),
-                tipo: 'C'
+                tipo: 'Cliente'
             });
             pessoas.push(pessoa);
         };
@@ -79,7 +79,7 @@ export class PessoaService {
                 bairro: faker.location.country(),
                 cidade: faker.location.city(),
                 cep: faker.location.zipCode(),
-                tipo: 'F'
+                tipo: 'Farmaceutico'
             });
             pessoas.push(pessoa);
         };
