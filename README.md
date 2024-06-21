@@ -24,7 +24,8 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Nest](https://github.com/nestjs/nest) framework TypeScript.
+This API was designed to manage a pharmacy system, developed as part of a database course project. It provides a comprehensive set of endpoints to handle various functionalities required for the operation of a pharmacy, including managing inventory, processing recipes, and more.
 
 ## Requisitos
 
@@ -46,12 +47,6 @@ $ docker-compose up -d
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
