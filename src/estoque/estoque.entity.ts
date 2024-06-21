@@ -14,5 +14,5 @@ export class Estoque {
     quantidade: number;
 
     @Column()
-    localizacao: string;
+    descricao: string;
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Post, Put, UseGuards } from "@nestjs/common";
 import { EstoqueService } from "./estoque.service";
 import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 
@@ -22,5 +22,14 @@ export class EstoqueController {
     @UseGuards(JwtAuthGuard)
     getPessoa(@Body() where?) {
         return this.estoqueService.getEstoque(where);
+    }
+    @Put('/update')
+    putReceita(@Body() set, where) {
+        return this.estoqueService.updateEstoque(set, where);
+
+    }
+    @Delete('/delete')
+    deleteReceita(@Body() where) {
+        return this.estoqueService.deleteEstoque(where);
     }
 }

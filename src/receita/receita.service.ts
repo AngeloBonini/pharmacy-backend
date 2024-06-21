@@ -15,7 +15,6 @@ interface ReceitaDto {
 export class ReceitaService {
     constructor(@InjectRepository(Receita) private readonly receitaRepository: Repository<Receita>,
         @InjectRepository(ProdutosReceita) private readonly produtosReceitaService: ProdutosReceitaService,
-        @InjectRepository(Transacao) private readonly transacaoService: TransacaoService,
     ) {
     }
 
@@ -29,18 +28,9 @@ export class ReceitaService {
             produtoReceita.receita = receita;
             const produtosReceitaCreated = await this.produtosReceitaService.create(produtoReceita);
             produtosReceitasCreateds.push(produtosReceitaCreated);
-            const transactionValue = produtoReceita.quantidade * produtoReceita.produto.preco; 7
-
-            transactionSum += transactionValue;
         }
 
         const saveReceita = await this.receitaRepository.save(receita);
-
-        const transacao = await this.transacaoService.create({
-            id_pessoa: dto.receita.id_farmaceutico,
-            data_transacao: new Date(),
-            valor_transacao: transactionSum,
-        });
 
         return { saveReceita, produtosReceitasCreateds }
     }

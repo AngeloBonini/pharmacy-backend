@@ -28,12 +28,19 @@ export class EstoqueService {
 
         for (const produto of produtos) {
             const estoque = this.estoqueRepository.create({
-                localizacao: "BANCADA: " + (Math.floor(Math.random() * (5 - 1 + 5)) + 1) + " ,PRATELEIRA: " + (Math.floor(Math.random() * (5 - 1 + 5)) + 1),
+                descricao: "BANCADA: " + (Math.floor(Math.random() * (5 - 1 + 5)) + 1) + " ,PRATELEIRA: " + (Math.floor(Math.random() * (5 - 1 + 5)) + 1),
                 produto: produto,
                 quantidade: Math.floor(Math.random() * (5 - 1 + 5)) + 1,
             });
             estoques.push(estoque);
         };
         return this.estoqueRepository.save(estoques);
+    }
+    async updateEstoque(set: any, where: any) {
+        return await this.estoqueRepository.update(where, set);
+    }
+
+    async deleteEstoque(where: any) {
+        return await this.estoqueRepository.delete(where);
     }
 }
