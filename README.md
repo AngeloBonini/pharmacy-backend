@@ -27,7 +27,7 @@
 [Nest](https://github.com/nestjs/nest) framework TypeScript.
 This API was designed to manage a pharmacy system, developed as part of a database course project. It provides a comprehensive set of endpoints to handle various functionalities required for the operation of a pharmacy, including managing inventory, processing recipes, and more.
 
-## Requisitos
+## Requirements
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
